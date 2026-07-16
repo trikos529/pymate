@@ -1,21 +1,26 @@
 from tkinter import *
 
 class UI:
-    bg_colour = "#ffffff" #default colour dialog to change 
-    text_colour ="#000000"#default text colour
-    btn_colour  ="#919191"#default btn/wigdeat area
-    win_width ="800" #can be read from json config which can be placed in %apdata% 
-    win_height ="600"#can be read from json config which can be placed in %apdata% 
-    win_sieze = win_width + "x" + win_height
-
-    # Create Window
-    win = Tk()
-    win.geometry(win_sieze) #we can read it from json config 
-    win.title("Open Action Reciever")
-    win.resizable(width=False,height=FALSE)
-    #logo = PhotoImage()               #logo to be made
-    #win.iconphoto(True, logo)
-    win.config(background=bg_colour)
+    def __init__(self, bg_colour,text_colour,btn_colour,win_width,win_height,font):  #constructor pass json file path as argument to extract values 
+        self.win_sieze = win_width + "x" + win_height
+        self.text_colour = text_colour
+        self.btn_colour = btn_colour
+        self.bg_colour = bg_colour
+        self.font = font 
+        self.win = Tk()
+        self.win.geometry(self.win_sieze) 
+        self.win.title("Open Action Reciever")
+        self.win.resizable(width=False,height=FALSE)
+        #self.logo = PhotoImage()               #logo to be made
+        #self.win.iconphoto(True, logo)
+        self.win.config(background=bg_colour)
+        UI.sidebar_draw()
     
-
-    win.mainloop()
+        self.win.mainloop()
+        
+    def clear_content(self):    #helper caled froam any drawing func
+        for widget in self.content_frame.winfo_children():
+            widget.destroy()
+    def sidebar_draw(self):
+        
+        ...
